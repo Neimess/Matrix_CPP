@@ -3,6 +3,7 @@
 #include <windows.h>
 #include <cmath>
 #include "matrix_lib.h"
+#include "test.h"
 
 int main()
 {
@@ -55,8 +56,10 @@ int main()
 	{
 		std::cout << "Determinant\n"
 				  << A.determinant(&A) << std::endl;
-		std::cout << "Reverse Matrix\n" << A.reverse(&A, A.getrow()) << std::endl;
-		std::cout << "Exponent Matrix\n" << A.exponent();
+		std::cout << "Reverse Matrix\n"
+				  << A.reverse(&A) << std::endl;
+		std::cout << "Exponent Matrix\n"
+				  << A.exponent();
 	}
 	catch (Matrix_Exception &e)
 	{
@@ -64,5 +67,5 @@ int main()
 		std::cerr << "Type: " << typeid(e).name() << std::endl;
 	}
 
-	// test();
+	test();
 }

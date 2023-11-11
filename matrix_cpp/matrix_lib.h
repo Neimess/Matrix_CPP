@@ -44,7 +44,7 @@ public:
     Matrix exponent(unsigned int);
     Matrix set_transpose();
     Matrix minor(const unsigned int, const unsigned int);
-    Matrix reverse(const Matrix *, const unsigned int);
+    Matrix reverse(const Matrix *);
     double determinant(const Matrix *);
 
     Matrix &operator=(Matrix &&) noexcept;
@@ -370,7 +370,7 @@ double Matrix::determinant(const Matrix *matrix)
     return det;
 }
 
-Matrix Matrix::reverse(const Matrix *matrix, const unsigned int size)
+Matrix Matrix::reverse(const Matrix *matrix)
 {
     double d = determinant(matrix);
     if (matrix->rows != matrix->cols)
@@ -382,7 +382,7 @@ Matrix Matrix::reverse(const Matrix *matrix, const unsigned int size)
         for (unsigned int col = 0; col < reverse.cols; col++)
         {
             Matrix temp = minor(row, col);
-            reverse.values[row * size + col] = k * determinant(&temp);
+            reverse.values[row * matrix->cols + col] = k * determinant(&temp);
             k = -k;
         }
     }

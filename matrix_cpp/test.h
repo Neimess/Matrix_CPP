@@ -1,4 +1,5 @@
 #include "matrix_lib.h"
+
 #ifndef TEST_H
 #define TEST_H
 void test_add() 
@@ -114,7 +115,7 @@ void test_det()
 						0, 9, 4,
 						8, 8, 2 };
 	Matrix matrix1 = Matrix(3, 3).fill_from_array(data1);
-	double determinant = matrix1.determinant(matrix1, matrix1.getrow());
+	double determinant = matrix1.determinant(&matrix1);
 	if (determinant != -78) {
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
 		std::cout << "Determinant test failed\n";
@@ -136,7 +137,7 @@ void test_rev() {
 					 0.923077,   -0.615385, -0.115385 };
 	Matrix matrix1 = Matrix(3, 3).fill_from_array(data1);
 	Matrix test_rev = Matrix(3, 3).fill_from_array(ans);
-	Matrix rev = matrix1.reverse(matrix1, matrix1.getrow());
+	Matrix rev = matrix1.reverse(&matrix1);
 	if (rev == test_rev) {
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 3);
 		std::cout << "Reverse test passed\n";
